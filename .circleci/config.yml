@@ -116,7 +116,7 @@ jobs:
             cd frontend
             npm install
             npm update
-            npm audit --audit-level=critical
+            npm audit fix --audit-level=critical --force
       - save_cache:
           paths: [frontend/node_modules]
           key: scan-frontend
@@ -133,7 +133,7 @@ jobs:
           command: |
             cd backend
             npm i
-            npm audit fix --audit-level=critical
+            npm audit fix --audit-level=critical --force
       - save_cache:
           paths: [frontend/node_modules]
           key: scan-frontend
@@ -147,7 +147,7 @@ jobs:
       - run:
           name: Ensure back-end infrastructure exists
           command: |
-            aws cloudformation deploy \
+            aws cloudformation123 deploy \
               --template-file .circleci/files/backend.yml \
               --tags project=udacity \
               --stack-name prod-backend-${CIRCLE_WORKFLOW_ID:0:7} \

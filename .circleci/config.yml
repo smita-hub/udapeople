@@ -203,7 +203,7 @@ jobs:
       - run: cd backend && npm install
       - run:
           name: Run database migrations
-          no_output_timeout: 10m
+          no_output_timeout: 30m
           command: |
             cd backend && npm run migrations | tee migration_results.txt
       - run:
